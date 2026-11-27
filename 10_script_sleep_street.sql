@@ -357,3 +357,20 @@ SELECT * FROM solicitacao_reembolso;
 
 -- 10. Testar tabela historico_status_reembolso
 SELECT * FROM historico_status_reembolso;
+
+-- Questao Numero 3
+-- Consulte o título da viagem, a cidade de destino, o país de destino e o nome do
+-- viajante para todas as viagens que estão ativas (ativa = TRUE) com destino fora do 'Brasil',
+-- ordenadas pelo título da viagem em ordem alfabética.
+
+SELECT  
+    viagem.titulo_viagem,
+    viagem.destino_cidade,
+    viagem.destino_pais,
+    u.nome
+FROM usuario u
+INNER JOIN viagem
+    ON viagem.fk_usuario = u.id_usuario
+WHERE viagem.ativa = TRUE
+ORDER BY u.nome ASC;
+
